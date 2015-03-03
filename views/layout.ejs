@@ -1,40 +1,89 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>New Sails App</title>
+    <title>FakeBook</title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    
-    <!--  
+
+    <!--
         Stylesheets and Preprocessors
         ==============================
 
         You can always bring in CSS files manually with `<link>` tags, or asynchronously
-        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage 
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage
         of Sails' conventional asset pipeline (boilerplate Gruntfile).
 
         By default, stylesheets from your `assets/styles` folder are included
         here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
         are supported. In production, your styles will be minified and concatenated into
         a single file.
-        
+
         To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
         For example, here are a few things you could do:
-            
+
             + Change the order of your CSS files
             + Import stylesheets from other directories
             + Use a different or additional preprocessor, like SASS, SCSS or Stylus
     -->
 
     <!--STYLES-->
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
   </head>
 
   <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="container">
+          <ul class="nav navbar-nav">
+            <a class="navbar-brand" href="/"> FakeBook</a>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>Admin</strong><span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/songs/index"></span>Songs</a></li>
+                <li class="divider"></li>
+                <li><a href="#"></span>Option</a></li>
+                <li><a href="#"></span>Option</a></li>
+                <li><a href="#"></span>Option</a></li>
+              </ul>
+            </li>
+            <li><a href="#" class="navbar-link"><strong>Stuff</strong></a></li>
+            <li><a href="#" class="navbar-link"><strong>More Stuff</strong></a></li>
+            <li><a href="#" class="navbar-link"><strong>All The Stuff</strong></a></li>
+          </ul>
+        <!--
+        <ul class="nav navbar-nav pull-right">
+          <li><a href="/user/new"><strong>Sign Up</strong></a></li>
+        </ul>
+        -->
+          <form action="/songs/search" method="POST" class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search" name="title">
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Proceed" class="btn btn-lg btn-primary btn-block"/>
+              <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+              </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+
     <%- body %>
+
+    <div class="container">
+      <hr>
+      <footer class="footer pull-right">
+        <div>
+          <a href="http://sailsjs.com/">sails.js</a>
+          <div>tutorial videos to learn node.js and sails.js</div>
+        </div>
+      </footer>
+    </div>
 
 
 
@@ -49,7 +98,7 @@
         By default, your Gruntfile is configured to automatically load and precompile
         client-side JST templates in your `assets/templates` folder, then
         include them here automatically (between TEMPLATES and TEMPLATES END).
-        
+
         To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
         For example, here are a few things you could do:
 
@@ -70,17 +119,17 @@
       ========================
 
       You can always bring in JS files manually with `script` tags, or asynchronously
-      on the client using a solution like AMD (RequireJS).  Or, if you like, you can 
+      on the client using a solution like AMD (RequireJS).  Or, if you like, you can
       take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
 
       By default, files in your `assets/js` folder are included here
       automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
       CoffeeScript (.coffee) are supported. In production, your scripts will be minified
       and concatenated into a single file.
-      
+
       To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
       For example, here are a few things you could do:
-          
+
           + Change the order of your scripts
           + Import scripts from other directories
           + Use a different preprocessor, like TypeScript
@@ -89,6 +138,10 @@
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/dependencies/jquery-2.1.1.min.js"></script>
+    <script src="/js/dependencies/jquery-validate.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/customValidate.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>

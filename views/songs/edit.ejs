@@ -1,0 +1,9 @@
+<form action="/songs/update/<%= song.id %>" method="POST" class="form-signin">
+    <h2>You're editing a song...</h2>
+
+    <input value="<%= song.bookcode %>" name="bookcode" type="text" class="form-control"/>
+    <input value="<%= song.title %>" name="title" type="text" class="form-control"/>
+    <input value="<%= song.page %>" name="page" type="text" class="form-control"/>
+    <input type="submit" value="Proceed" class="btn btn-lg btn-primary btn-block"/>
+    <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+</form>
