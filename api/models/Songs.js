@@ -14,7 +14,9 @@ autoUpdatedAt: false,
     attributes: {
 
         id: {
-            type: 'int'
+            type: 'int',
+            primaryKey: true,
+            required: true
         },
 
         bookcode: {

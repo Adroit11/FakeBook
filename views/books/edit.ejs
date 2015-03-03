@@ -1,0 +1,10 @@
+<form action="/books/update/<%= book.id %>" method="POST" class="form-signin">
+    <h2>You're editing a book...</h2>
+
+    <input value="<%= book.id %>" name="id" type="integer" class="form-control"/>
+    <input value="<%= book.bookcode %>" name="bookcode" type="text" class="form-control"/>
+    <input value="<%= book.title %>" name="title" type="text" class="form-control"/>
+    <input value="<%= book.page %>" name="page" type="text" class="form-control"/>
+    <input type="submit" value="Commit Change" class="btn btn-lg btn-primary btn-block"/>
+    <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+</form>

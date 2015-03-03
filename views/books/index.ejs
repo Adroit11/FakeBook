@@ -1,0 +1,33 @@
+<div class="container">
+    <h3>Books</h3>
+    <h2><%= books.length %></h2>
+    <table class="table">
+        <tr>
+            <th>Code</th>
+            <th>Title</th>
+            <th>Format</th>
+            <th>Filename</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+
+
+        <% _.each(books, function(book) { %>
+        <tr data-id="<%= books.code %>" data-model="books">
+            <td><%= book.code %></td>
+            <td><%= book.title %></td>
+            <td><%= book.format %></td>
+            <td><%= book.filename %></td>
+            <td><a href="/books/show/<%= book.code %>" class="btn btn-sm btn-primary">Show</a></td>
+            <td><a href="/books/edit/<%= book.code %>" class="btn btn-sm btn-warning">Edit</a></td>
+            <td><form action="/books/destroy/<%= book.code %>" method="POST">
+                <input type="hidden" name="_method" value="delete"/>
+                <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+                <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+            </form></td>
+        </tr>
+
+        <% }) %>
+    </table>
+</div>
