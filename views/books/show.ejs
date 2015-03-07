@@ -1,9 +1,9 @@
 <div class="container">
-    <h1><%= book.bookcode %></h1>
-    <h3><%= book.title %></h3>
+    <h1><%= book.title %></h1>
+    <h3><%= book.code %></h3>
     <hr>
-    <h3>Page: <%= book.page %></h3>
+    <h3>File Name: <%= book.filename %></h3>
 
-    <a class="btn btn-medium btn-primary" href="/books/edit/<%= book.id %>">Edit</a>
+    <a class="btn btn-medium btn-primary" href="/books/edit/<%= book.code %>">Edit</a>
 
 </div>

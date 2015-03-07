@@ -1,0 +1,46 @@
+<div class="container">
+    <h1><%= book.title %></h1>
+    <h3><%= book.code %></h3>
+    <hr>
+    <h3>File Name: <%= book.filename %></h3>
+
+    <a class="btn btn-medium btn-primary" href="/books/edit/<%= book.code %>">Edit</a>
+
+    	<div class="row">
+	    <div class="col-md-6">
+	        <div class="panel-body">
+	                <h2>Songs</h2>
+	                <h3><%= songs.length %></h3>
+	                <table class="table table-condensed">
+	                    <tr>
+	                        <th>ID</th>
+	                        <th>BookCode</th>
+	                        <th>Title</th>
+	                        <th>Page</th>
+	                        <th></th>
+	                        <th></th>
+	                        <th></th>
+	                    </tr>
+
+
+	                    <% _.each(songs, function(song) { %>
+	                    <tr data-id="<%= songs.id %>" data-model="songs">
+	                        <td><%= song.id %></td>
+	                        <td><%= song.bookcode %></td>
+	                        <td><%= song.title %></td>
+	                        <td><%= song.page %></td>
+	                        <td><a href="/songs/show/<%= song.id %>" class="btn btn-sm btn-primary">Show</a></td>
+	                        <td><a href="/songs/edit/<%= song.id %>" class="btn btn-sm btn-warning">Edit</a></td>
+	                        <td><form action="/songs/destroy/<%= song.id %>" method="POST">
+	                            <input type="hidden" name="_method" value="delete"/>
+	                            <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+	                            <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+	                        </form></td>
+	                    </tr>
+
+	                    <% }) %>
+	                </table>
+	                </div>
+	        </div>
+	        </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        <div class="panel-body">
+                <h2>Books</h2>
+                <h3><%= books.length %></h3>
+                <table class="table table-condensed">
+                    <tr>
+                        <th>Code</th>
+                        <th>Title</th>
+                        <th>Format</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+
+
+                    <% _.each(books, function(book) { %>
+                    <tr data-id="<%= books.code %>" data-model="books">
+                        <td><%= book.code %></td>
+                        <td><%= book.title %></td>
+                        <td><%= book.format %></td>
+                        <td><form action="/main/show/<%= book.code %>" method="POST">
+                            <input type="hidden" name="code" value="<%= book.code %>"/>
+                            <input type="submit" value="Show" class="btn btn-sm btn-primary"/>
+                            <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                        </form></td>
+                        <td><a href="/books/edit/<%= book.code %>" class="btn btn-sm btn-warning">Edit</a></td>
+                        <td><form action="/books/destroy/<%= book.code %>" method="POST">
+                            <input type="hidden" name="_method" value="delete"/>
+                            <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+                            <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                        </form></td>
+                    </tr>
+
+                    <% }) %>
+                </table>
+                </div>
+        </div>
+        <div class="col-md-6">
+        <div class="panel-body">
+                <h2>Songs</h2>
+                <h3><%= songs.length %></h3>
+                <table class="table table-condensed">
+                    <tr>
+                        <th>ID</th>
+                        <th>BookCode</th>
+                        <th>Title</th>
+                        <th>Page</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+
+
+                    <% _.each(songs, function(song) { %>
+                    <tr data-id="<%= songs.id %>" data-model="songs">
+                        <td><%= song.id %></td>
+                        <td><%= song.bookcode %></td>
+                        <td><%= song.title %></td>
+                        <td><%= song.page %></td>
+                        <td><a href="/songs/show/<%= song.id %>" class="btn btn-sm btn-primary">Show</a></td>
+                        <td><a href="/songs/edit/<%= song.id %>" class="btn btn-sm btn-warning">Edit</a></td>
+                        <td><form action="/songs/destroy/<%= song.id %>" method="POST">
+                            <input type="hidden" name="_method" value="delete"/>
+                            <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
+                            <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                        </form></td>
+                    </tr>
+
+                    <% }) %>
+                </table>
+                </div>
+        </div>
+    </div>
+</div>

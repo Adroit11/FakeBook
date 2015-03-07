@@ -37,8 +37,7 @@ module.exports = {
 	},
 
 	search: function(req, res, next) {
-	      Songs.query("SELECT * FROM songs WHERE title LIKE ('%"+(req.param('title'))+"%')", function(err, songs){
-	      //Songs.find().where({title: req.param('title') }).exec(function(err, songs) {
+	      Songs.find({title : {contains : (req.param('title'))}}).exec(function(err, songs) {
 		            if (err) return next(err);
 		            res.view({
 		                	songs: songs
